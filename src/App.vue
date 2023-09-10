@@ -1,33 +1,39 @@
 <template>
   <section>
     <div class="container">
-
+      <Navbar></Navbar>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
-import Navbar from './components/TheNavbar.vue';
+import { defineComponent } from "vue";
+import Navbar from "./components/TheNavbar.vue";
 
 export default defineComponent({
-  name: 'App',
+  name: "App",
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 });
 </script>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Poppins;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 a {
   text-decoration: none;
+  color: inherit;
+}
+.container {
+  width: 900px;
+}
+section {
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <span class="logo">BookSearch</span>
+    <a href="/" class="logo">BookSearch</a>
     <ul class="nav-links">
       <li><a href="/">register</a></li>
       <li><a href="/">login</a></li>
@@ -19,5 +19,37 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
+  .logo {
+    color: #2B7F75;
+    font-weight: 800;
+    letter-spacing: 2px;
+    font-size: 30px;
+    font-style: italic;
+  }
+
+  .nav-links{
+    display: flex;
+    gap: 10px;
+    list-style: none;
+  }
+
+  .nav-links li{
+    padding: 10px 20px;
+    border: 1px solid #2B7F75;
+    border-radius: 7px;
+    color: #2B7F75;
+    font-weight: 500;
+    transition: .1s all linear;
+  }
+
+  .nav-links li:hover {
+    background-color: #2B7F75;
+    color: white;
+  }
 </style>
