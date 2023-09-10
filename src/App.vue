@@ -1,19 +1,20 @@
 <template>
-  <section>
-    <div class="container">
-      <Navbar></Navbar>
-    </div>
-  </section>
+  <div>
+    <Home />
+    <Login />
+  </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import Navbar from "./components/TheNavbar.vue";
+import Home from "./views/Home.vue";
+import Login from "./views/Login.vue";
 
 export default defineComponent({
   name: "App",
   components: {
-    Navbar,
+    Home,
+    Login,
   },
 });
 </script>
@@ -25,13 +26,16 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 .container {
   width: 900px;
 }
+
 section {
   display: flex;
   justify-content: center;
