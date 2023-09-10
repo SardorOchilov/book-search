@@ -2,6 +2,7 @@
   <div>
     <Home />
     <Login />
+    <Register />
   </div>
 </template>
 
@@ -9,12 +10,14 @@
 import { defineComponent } from "vue";
 import Home from "./views/Home.vue";
 import Login from "./views/Login.vue";
+import Register from "./views/Register.vue";
 
 export default defineComponent({
   name: "App",
   components: {
     Home,
     Login,
+    Register,
   },
 });
 </script>
