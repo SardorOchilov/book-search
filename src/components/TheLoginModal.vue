@@ -53,7 +53,7 @@ input:focus {
   cursor: pointer;
   transition: .06s all linear;
 }
-.submit:focus{
+.submit:active{
     transform: scale(1.05);
 }
 </style>

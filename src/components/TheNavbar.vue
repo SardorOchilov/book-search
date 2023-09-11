@@ -1,10 +1,13 @@
 <template>
-  <div class="navbar">
-    <a href="/" class="logo">BookSearch</a>
-    <ul class="nav-links">
-      <li><a href="/">register</a></li>
-      <li><a href="/">login</a></li>
-    </ul>
+  <div>
+    <div class="navbar">
+      <a href="/" class="logo">BookSearch</a>
+      <ul class="nav-links">
+        <li><a href="/">register</a></li>
+        <li><a href="/">login</a></li>
+      </ul>
+    </div>
+    <hr />
   </div>
 </template>
 
@@ -18,10 +21,17 @@ export default defineComponent({
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+hr {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  border: 1px solid #e7e7e772;
+}
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px 0;
 }
 
 .logo {

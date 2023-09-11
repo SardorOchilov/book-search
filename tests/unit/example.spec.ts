@@ -1,12 +1,10 @@
-import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import { mount } from "@vue/test-utils";
+import Navbar from "../../src/components/TheNavbar.vue";
 
-describe('HelloWorld.vue', () => {
-  it('renders props.msg when passed', () => {
-    const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      props: { msg }
-    })
-    expect(wrapper.text()).toMatch(msg)
-  })
-})
+describe("Navbar", () => {
+  it("renders navbar components", () => {
+    const wrapper = mount(Navbar);
+
+    console.log(wrapper.html());
+  });
+});

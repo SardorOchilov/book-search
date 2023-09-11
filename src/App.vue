@@ -1,8 +1,6 @@
 <template>
   <div>
     <Home />
-    <Login />
-    <Register />
   </div>
 </template>
 
@@ -29,6 +27,11 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
 a {
   text-decoration: none;
@@ -41,6 +44,8 @@ a {
 
 section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
 }
 </style>
