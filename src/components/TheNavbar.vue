@@ -3,8 +3,8 @@
     <div class="navbar">
       <a href="/" class="logo">BookSearch</a>
       <ul class="nav-links">
-        <li><a href="/">register</a></li>
-        <li><a href="/">login</a></li>
+        <li><router-link to="/register" href="/">register</router-link></li>
+        <li><router-link to="/login" href="/">login</router-link></li>
       </ul>
     </div>
     <hr />

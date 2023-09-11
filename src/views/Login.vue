@@ -18,6 +18,7 @@ export default defineComponent({
 
 <style scoped>
 section {
+  justify-content: center;
   align-items: center;
   background: #F7F6F9;
   height: 100vh;

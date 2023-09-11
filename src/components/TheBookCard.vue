@@ -3,8 +3,8 @@
     <div class="img-box"></div>
     <img src="b" alt="" />
     <div class="book-description">
-      <h4>Tittle</h4>
-      <p>author</p>
+      <h4>{{title}}</h4>
+      <p>{{author}}</p>
       <div class="btn-box">
         <button class="box-card-btn">See detail</button>
       </div>
@@ -12,11 +12,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { defineComponent } from "vue";
 
 export default defineComponent({
   name: "BookCard",
+  props: {
+    title: String,
+    author: String
+  }
 });
 </script>
 
@@ -28,7 +32,6 @@ export default defineComponent({
   border-radius: 10px;
   overflow: hidden;
   background-color: white;
-  width: 300px;
   box-shadow: 0px 2.72px 3.712px 0px rgba(0, 0, 0, 0.01),
     0px 12.16px 8.576px 0px rgba(0, 0, 0, 0.01),
     30px 30.24px 20px 0px rgba(0, 0, 0, 0.02);

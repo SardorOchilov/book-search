@@ -18,6 +18,8 @@
   
   <style scoped>
   section {
+    display: flex;
+    justify-content: center;
     align-items: center;
     background: #F7F6F9;
     height: 100vh;

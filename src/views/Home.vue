@@ -3,41 +3,44 @@
     <div class="container">
       <Navbar />
       <div class="search-box">
-        <input class="search-input" type="text" placeholder="Search" />
+        <input
+          class="search-input"
+          v-on:change=""
+          type="text"
+          placeholder="Search"
+        />
         <button class="search-btn">Search</button>
       </div>
     </div>
 
     <div class="container">
       <div class="books-table">
-        <BookCard v-for="card in cards" v-bind:class="{ active: a === 'a' }" />
+        <BookCard title="a" author="b" v-for="card in books" />
       </div>
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from "vue";
+import { defineComponent, ref, onUpdated } from "vue";
 import Navbar from "../components/TheNavbar.vue";
 import BookCard from "../components/TheBookCard.vue";
+import axios from "axios";
 
-type Period = 'a'| 'b'| 'c'
+let books: any = ref(null);
+const search = ref("programming");
+
+function getBooks() {
+  axios
+    .get(`https://www.googleapis.com/books/v1/volumes?q=${search}`)
+    .then((data) => (books.value = data));
+}
 
 export default defineComponent({
   name: "Home",
   components: {
     Navbar,
     BookCard,
-  },
-
-  setup() {
-    const cards = [{}, {}, {}];
-    const a = ref<Period>("a");
-
-    const setPeriod = (period: Period) => {
-      a.value  = period
-    }
-    return { cards, a, setPeriod };
   },
 });
 </script>
