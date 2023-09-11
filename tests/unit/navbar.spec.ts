@@ -5,6 +5,8 @@ describe("Navbar", () => {
   it("renders navbar components", () => {
     const wrapper = mount(Navbar);
 
-    console.log(wrapper.html());
+    expect(wrapper.html()).toContain('register')
+    expect(wrapper.html()).toContain('login')
+    expect(wrapper.html()).toContain('BookSearch')
   });
 });
