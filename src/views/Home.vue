@@ -10,20 +10,24 @@
           placeholder="Search"
         />
       </div>
-    </div>
 
-    <div class="container">
-      <div class="books-table">
-        <BookCard
-          :img="book.volumeInfo.imageLinks.thumbnail"
-          :title="book.volumeInfo.title"
-          :author="
-            book.volumeInfo.authors ? book.volumeInfo.authors[0] : 'No author'
-          "
-          :id="book.id"
-          v-for="book in books"
-        />
-      </div>
+      <template v-if="loading"> Loading... </template>
+      <template v-else
+        ><div class="container">
+          <div class="books-table">
+            <BookCard
+              :img="book.volumeInfo.imageLinks.thumbnail"
+              :title="book.volumeInfo.title"
+              :author="
+                book.volumeInfo.authors
+                  ? book.volumeInfo.authors[0]
+                  : 'No author'
+              "
+              :id="book.id"
+              v-for="book in books"
+            />
+          </div></div
+      ></template>
     </div>
   </section>
 </template>
@@ -42,6 +46,7 @@ export default defineComponent({
   },
 
   setup() {
+    const loading = ref(true);
     let books: any = ref({});
     const search = ref("");
 
@@ -55,7 +60,7 @@ export default defineComponent({
         .then((data) => (books.value = data.data.items))
         .catch((error) => alert(`${error.massage}`));
     }
-    
+
     onMounted(() => {
       axios
         .get(
@@ -63,7 +68,10 @@ export default defineComponent({
             search.value ? search.value : "programming"
           }&key=AIzaSyBEUco8bJ9TgGGw8hlrZNLEN6_62LBxfIo`
         )
-        .then((data) => (books.value = data.data.items))
+        .then((data) => {
+          loading.value = false;
+          books.value = data.data.items;
+        })
         .catch((error) => alert(`${error.massage}`));
     }),
       watch(search, () => {
@@ -73,6 +81,7 @@ export default defineComponent({
     return {
       books,
       search,
+      loading,
     };
   },
 });
