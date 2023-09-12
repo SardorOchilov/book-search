@@ -1,6 +1,8 @@
 <template>
   <section>
-    <LoginModal />
+    <div class="container">
+      <LoginModal />
+    </div>
   </section>
 </template>
 
@@ -18,9 +20,13 @@ export default defineComponent({
 
 <style scoped>
 section {
-  justify-content: center;
+  background: #f7f6f9;
+  height: 100vh;
+}
+.container {
+  display: flex;
   align-items: center;
-  background: #F7F6F9;
+  justify-content: center;
   height: 100vh;
 }
 </style>

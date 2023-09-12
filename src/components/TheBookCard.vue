@@ -1,12 +1,16 @@
 <template>
   <div class="book-card-box">
-    <div class="img-box"></div>
-    <img src="b" alt="" />
+    <div class="img-box">
+      <img :src="img" alt="" />
+    </div>
+
     <div class="book-description">
-      <h4>{{title}}</h4>
-      <p>{{author}}</p>
+      <div class="book-text">
+        <h4>{{ title }}</h4>
+        <p>{{ author }}</p>
+      </div>
       <div class="btn-box">
-        <button class="box-card-btn">See detail</button>
+        <RouterLink :to="id || ''" class="box-card-btn">See detail</RouterLink>
       </div>
     </div>
   </div>
@@ -19,8 +23,10 @@ export default defineComponent({
   name: "BookCard",
   props: {
     title: String,
-    author: String
-  }
+    author: String,
+    img: String,
+    id: String
+  },
 });
 </script>
 
@@ -39,14 +45,23 @@ export default defineComponent({
   border: 1px solid #f2eeee;
 }
 .img-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
   width: 100%;
-  height: 150px;
+  height: 280px;
 }
-.book-card-box img {
-  object-fit: contain;
+.img-box img {
+  position: absolute;
+  height: 100%;
 }
 .book-description {
   padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: #eef3f3;
 }
 h4 {
   font-size: 18px;
@@ -67,12 +82,12 @@ h4 {
   border-radius: 7px;
   color: white;
   font-size: 14px;
-  font-weight: 900;
+  font-weight: 700;
   background-color: #2b7f75;
   cursor: pointer;
-  transition: .06s all linear;
+  transition: 0.06s all linear;
 }
-.box-card-btn:active{
-    transform: scale(1.05);
+.box-card-btn:active {
+  transform: scale(1.05);
 }
 </style>

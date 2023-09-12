@@ -39,7 +39,7 @@ a {
 }
 
 .container {
-  width: 900px;
+  width: 1200px;
 }
 
 section {
@@ -47,5 +47,12 @@ section {
   flex-direction: column;
   align-items: center;
   position: relative;
+}
+
+@media only screen and (max-width: 1200px) {
+  .container {
+    width: 100%;
+    padding: 0 20px;
+  }
 }
 </style>
