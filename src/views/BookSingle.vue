@@ -8,7 +8,7 @@
       <template v-else>
         <div class="book-box">
           <div class="img-box">
-            <img :src="book.imageLink" alt="" />
+            <img :src="book.imageLink.toString()" alt="" />
           </div>
           <div class="book-description">
             <h2>{{ book.title }}</h2>
