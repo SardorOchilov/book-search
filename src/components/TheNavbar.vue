@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="navbar">
-      <a href="/" class="logo">BookSearch</a>
+      <router-link to="/" class="logo">BookSearch</router-link>
       <template v-if="user">
         <div class="profile-box">
           <div class="Profile"></div>
