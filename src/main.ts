@@ -35,7 +35,7 @@ const router = createRouter({
 const app = createApp(App);
 app.use(router);
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   if (to.name === "bookSingle" && !JSON.parse(localStorage.getItem('isAuth')!)) {
     next({name: 'register'})
   } else {
