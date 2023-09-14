@@ -14,7 +14,12 @@
             <h2>{{ book.title }}</h2>
             <div class="book-addition">
               <div>
-                <p>categories: {{ book.categories }}</p>
+                <p>
+                  categories:
+                  <span v-for="category of book.categories">{{
+                    category
+                  }}</span>
+                </p>
                 <p>language: {{ book.language }}</p>
               </div>
               <div>
@@ -36,7 +41,7 @@ import Navbar from "../components/TheNavbar.vue";
 import BookCard from "../components/TheBookCard.vue";
 import { useRoute } from "vue-router";
 import { Book } from "../mapper";
-import { book as type } from "../types";
+import { IEntity } from "../types";
 import axios from "axios";
 
 export default defineComponent({
@@ -49,9 +54,8 @@ export default defineComponent({
     const loading = ref(true);
     const location = useRoute();
     const id = location.params.id;
-    let book = ref<type>({} as type);
+    let book = ref<IEntity.book>({} as IEntity.book);
     let books: any = ref({});
-    const search = "programming";
 
     onMounted(() => {
       axios

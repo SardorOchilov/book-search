@@ -1,10 +1,13 @@
-export interface book {
-  title: String;
-  year: String[];
-  publishedDate: String;
-  pageCount: Number;
-  categories: String[];
-  imageLink:  String ;
-  language: String;
-  publisher: String;
+export namespace IEntity {
+  export interface book {
+    title: string;
+    year: string[];
+    publishedDate: string;
+    pageCount: number;
+    categories: string[];
+    imageLink: string;
+    language: string;
+    publisher: string;
+  }
 }
+

@@ -10,9 +10,10 @@
     >
       <label for="username">Username</label>
       <input type="text" id="username" v-model="username" />
-      <button :disabled="isLoading" class="submit" type="submit">
+      <button :disabled="isLoading || !username" class="submit" type="submit">
         {{ isLoading ? "loading..." : "Login" }}
       </button>
+      <router-link to="/register">go to register</router-link>
     </form>
   </div>
 </template>
@@ -20,34 +21,28 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { useRouter } from "vue-router";
+import { auth } from "../auth";
 
 export default defineComponent({
   name: "LoginModal",
 
   setup() {
-    const router = useRouter()
+    const router = useRouter();
     const username = ref("");
     let isLoading = ref(false);
 
     async function login(username: string) {
       isLoading.value = true;
-      if (!/^[a-zA-Z]{16}$/.test(username)) {
-        alert("User name is incorrect");
-        isLoading.value = false
-        return;
+      try {
+        await auth(username, "login");
+        username = "";
+        router.push("/");
+       
+      } catch (error: any) {
+        isLoading.value = false;
+        alert(error.message)
+        
       }
-      await new Promise((res) =>
-        setTimeout(() => {
-          res("");
-        }, 3000)
-      );
-      if (window.localStorage.getItem("token") !== username) {
-        alert("this user is not found");
-      }else {
-        router.push('/')
-        username = ''
-      }
-      isLoading.value = false;
     }
 
     return {

@@ -4,15 +4,16 @@
       v-on:submit="
         (e) => {
           e.preventDefault();
-          register(username);
+          register();
         }
       "
     >
       <label for="username">Username</label>
       <input type="text" id="username" v-model="username" />
-      <button :disabled="isLoading" class="submit" type="submit">
+      <button :disabled="isLoading || !username" class="submit" type="submit">
         {{ isLoading ? "loading..." : "Register" }}
       </button>
+      <router-link to="/login">go to login</router-link>
     </form>
   </div>
 </template>
@@ -30,13 +31,14 @@ export default defineComponent({
     const username = ref("");
     let isLoading = ref(false);
 
-    async function register(username: string) {
+    async function register() {
       isLoading.value = true;
       try {
-        const res = await auth(username);
-        window.localStorage.setItem("token", res);
+        await auth(username.value, 'register');
+        username.value = '';
         router.push('/')
         isLoading.value = false;
+
       } catch (error: any) {
         isLoading.value = false;
         alert(error.message);

@@ -22,15 +22,20 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "Navbar",
   setup() {
+    const router = useRouter();
     const user = ref("");
-    user.value = window.localStorage.getItem("token")!;
+    user.value = window.localStorage.getItem("username")!;
 
     function logout(){
       user.value = ''
+      localStorage.setItem('isAuth', 'false')
+      localStorage.removeItem('username')
+      router.push('/')
     }
     return {
       user,

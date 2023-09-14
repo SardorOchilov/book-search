@@ -1,8 +1,8 @@
 import get from "lodash/get";
 
-import { book } from "./types";
+import { IEntity } from "./types";
 
-export const Book = (item: any): book => ({
+export const Book = (item: any): IEntity.book => ({
   title: get(item, "title") || "",
   year: get(item, "year") || [],
   publishedDate: get(item, "publishedDate"),
