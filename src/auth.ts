@@ -6,7 +6,7 @@ export async function auth(username: string, type: "register" | "login") {
       }, 3000)
     );
     if (type === "register") {
-      const storage = JSON.parse(localStorage.getItem("tokens")!) as string[];
+      const storage = JSON.parse(localStorage.getItem("tokens")!) as string[] || [];
       if (storage.indexOf(username) !== -1){
         throw new Error('this user is already registered')
       }
