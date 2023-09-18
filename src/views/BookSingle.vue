@@ -5,7 +5,8 @@
       <template v-if="loading">
         <p>Loading...</p>
       </template>
-      <template v-else>
+      <template  v-else>
+        <div class="home-single">
         <div class="book-box">
           <div class="img-box">
             <img :src="book.imageLink.toString()" alt="" />
@@ -30,6 +31,7 @@
             </div>
           </div>
         </div>
+      </div>
       </template>
     </div>
   </section>
@@ -66,6 +68,9 @@ onMounted(() => {
   display: flex;
   gap: 60px;
   margin-top: 50px;
+}
+.home-single {
+  margin-top: 100px;
 }
 .img-box {
   width: 30%;

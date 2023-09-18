@@ -5,8 +5,8 @@
         <router-link to="/" class="logo">hype<span>books</span></router-link>
         <ul class="nav-links">
           <router-link to="/" class="active"><li>Book Store</li></router-link>
-          <router-link to="/wishlist"><li>Wishlist</li></router-link>
-          <router-link to="/my-collection"><li>My Collection</li></router-link>
+          <li>Wishlist</li>
+          <li>My Collection</li>
         </ul>
       </div>
 
