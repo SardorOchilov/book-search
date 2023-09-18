@@ -6,8 +6,6 @@ import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
 import BookSingle from "./views/BookSingle.vue";
 import Navbar from "./components/TheNavbar.vue";
-import LoginModal from "./components/TheLoginModal.vue";
-import RegisterModal from "./components/TheRegisterModal.vue";
 import BookCard from "./components/TheBookCard.vue";
 import TheSidebarVue from "./components/TheSidebar.vue";
 
