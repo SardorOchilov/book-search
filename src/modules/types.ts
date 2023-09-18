@@ -9,5 +9,11 @@ export namespace IEntity {
     language: string;
     publisher: string;
   }
-}
 
+  export interface bookCard {
+    title: string;
+    id: string;
+    img: string;
+    author: string;
+  }
+}

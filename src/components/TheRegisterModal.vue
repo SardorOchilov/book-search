@@ -1,13 +1,6 @@
 <template>
   <div class="register-modal">
-    <form
-      v-on:submit="
-        (e) => {
-          e.preventDefault();
-          register();
-        }
-      "
-    >
+    <form v-on:submit.prevent="register()">
       <label for="username">Username</label>
       <input type="text" id="username" v-model="username" />
       <button :disabled="isLoading || !username" class="submit" type="submit">
@@ -20,25 +13,24 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { auth } from "../auth";
-import {useRouter} from 'vue-router'
+import { auth } from "../utils/auth";
+import { useRouter } from "vue-router";
 
 export default defineComponent({
   name: "RegisterModal",
 
   setup() {
-    const router = useRouter()
+    const router = useRouter();
     const username = ref("");
     let isLoading = ref(false);
 
     async function register() {
       isLoading.value = true;
       try {
-        await auth(username.value, 'register');
-        username.value = '';
-        router.push('/')
+        await auth(username.value, "register");
+        username.value = "";
+        router.push("/");
         isLoading.value = false;
-
       } catch (error: any) {
         isLoading.value = false;
         alert(error.message);
@@ -102,3 +94,4 @@ input:focus {
   }
 }
 </style>
+../utils/auth

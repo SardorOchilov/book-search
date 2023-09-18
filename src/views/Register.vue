@@ -6,17 +6,8 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import RegisterModal from "../components/TheRegisterModal.vue";
-
-export default defineComponent({
-  name: "Login",
-  components: {
-    RegisterModal,
-  },
-});
-</script>
+<script lang="ts" setup>
+import RegisterModal from '../components/TheRegisterModal.vue';</script>
 
 <style scoped>
 section {

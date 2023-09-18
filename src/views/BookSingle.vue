@@ -1,7 +1,7 @@
 <template>
   <section>
+    <Navbar />
     <div class="container">
-      <Navbar />
       <template v-if="loading">
         <p>Loading...</p>
       </template>
@@ -35,45 +35,27 @@
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
-import Navbar from "../components/TheNavbar.vue";
-import BookCard from "../components/TheBookCard.vue";
+<script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import { Book } from "../mapper";
-import { IEntity } from "../types";
+import { Book } from "../modules/mapper";
+import { IEntity } from "../modules/types";
 import axios from "axios";
 
-export default defineComponent({
-  name: "BookSingle",
-  components: {
-    Navbar,
-    BookCard,
-  },
-  setup() {
-    const loading = ref(true);
-    const location = useRoute();
-    const id = location.params.id;
-    let book = ref<IEntity.book>({} as IEntity.book);
-    let books: any = ref({});
+const loading = ref(true);
+const location = useRoute();
+const id = location.params.id;
+let book = ref<IEntity.book>({} as IEntity.book);
 
-    onMounted(() => {
-      axios
-        .get(
-          `https://www.googleapis.com/books/v1/volumes?q=${id}&key=AIzaSyBEUco8bJ9TgGGw8hlrZNLEN6_62LBxfIo`
-        )
-        .then((data) => {
-          loading.value = false;
-          book.value = Book(data.data.items[0].volumeInfo);
-        });
+onMounted(() => {
+  axios
+    .get(
+      `https://www.googleapis.com/books/v1/volumes?q=${id}&key=AIzaSyBEUco8bJ9TgGGw8hlrZNLEN6_62LBxfIo`
+    )
+    .then((data) => {
+      loading.value = false;
+      book.value = Book(data.data.items[0].volumeInfo);
     });
-
-    return {
-      book,
-      books,
-      loading,
-    };
-  },
 });
 </script>
 
@@ -126,3 +108,4 @@ export default defineComponent({
   }
 }
 </style>
+../modules/mapper

@@ -5,6 +5,11 @@ import Home from "./views/Home.vue";
 import Register from "./views/Register.vue";
 import Login from "./views/Login.vue";
 import BookSingle from "./views/BookSingle.vue";
+import Navbar from "./components/TheNavbar.vue";
+import LoginModal from "./components/TheLoginModal.vue";
+import RegisterModal from "./components/TheRegisterModal.vue";
+import BookCard from "./components/TheBookCard.vue";
+import TheSidebarVue from "./components/TheSidebar.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -34,10 +39,17 @@ const router = createRouter({
 
 const app = createApp(App);
 app.use(router);
+app
+  .component("Navbar", Navbar)
+  .component("BookCard", BookCard)
+  .component("Sidebar", TheSidebarVue);
 
 router.beforeEach((to, _, next) => {
-  if (to.name === "bookSingle" && !JSON.parse(localStorage.getItem('isAuth')!)) {
-    next({name: 'register'})
+  if (
+    to.name === "bookSingle" &&
+    !JSON.parse(localStorage.getItem("isAuth")!)
+  ) {
+    next({ name: "register" });
   } else {
     next();
   }

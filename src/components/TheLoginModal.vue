@@ -1,13 +1,6 @@
 <template>
   <div class="login-modal">
-    <form
-      v-on:submit="
-        (e) => {
-          e.preventDefault();
-          login(username);
-        }
-      "
-    >
+    <form v-on:submit.prevent="login">
       <label for="username">Username</label>
       <input type="text" id="username" v-model="username" />
       <button :disabled="isLoading || !username" class="submit" type="submit">
@@ -18,40 +11,26 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from "vue";
+<script lang="ts" setup>
+import { ref } from "vue";
 import { useRouter } from "vue-router";
-import { auth } from "../auth";
+import { auth } from "../utils/auth";
 
-export default defineComponent({
-  name: "LoginModal",
+const router = useRouter();
+const username = ref("");
+let isLoading = ref(false);
 
-  setup() {
-    const router = useRouter();
-    const username = ref("");
-    let isLoading = ref(false);
-
-    async function login(username: string) {
-      isLoading.value = true;
-      try {
-        await auth(username, "login");
-        username = "";
-        router.push("/");
-       
-      } catch (error: any) {
-        isLoading.value = false;
-        alert(error.message)
-        
-      }
-    }
-
-    return {
-      username,
-      isLoading,
-      login,
-    };
-  },
-});
+async function login() {
+  isLoading.value = true;
+  try {
+    await auth(username.value, "login");
+    username.value = "";
+    router.push("/");
+  } catch (error: any) {
+    isLoading.value = false;
+    alert(error.message);
+  }
+}
 </script>
 
 <style scoped>
@@ -103,3 +82,4 @@ input:focus {
   }
 }
 </style>
+../utils/auth

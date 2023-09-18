@@ -1,23 +1,11 @@
 <template>
   <div>
-    <RouterView/>
+    <RouterView />
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import Home from "./views/Home.vue";
-import Login from "./views/Login.vue";
-import Register from "./views/Register.vue";
+<script lang="ts" setup>
 
-export default defineComponent({
-  name: "App",
-  components: {
-    Home,
-    Login,
-    Register,
-  },
-});
 </script>
 
 <style>
@@ -40,6 +28,7 @@ a {
 
 .container {
   width: 1200px;
+  position: relative;
 }
 
 section {
@@ -47,6 +36,11 @@ section {
   flex-direction: column;
   align-items: center;
   position: relative;
+  padding-bottom: 20px;
+}
+
+.navbar {
+  z-index: 5;
 }
 
 @media only screen and (max-width: 1200px) {
