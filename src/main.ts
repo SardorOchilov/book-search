@@ -16,21 +16,33 @@ const router = createRouter({
       name: "home",
       path: "/",
       component: Home,
+      meta: {
+        home: true,
+      },
     },
     {
       name: "register",
       path: "/register",
       component: Register,
+      meta: {
+        isAuth: true,
+      },
     },
     {
       name: "login",
       path: "/login",
       component: Login,
+      meta: {
+        isAuth: true,
+      },
     },
     {
       name: "bookSingle",
       path: "/:id",
       component: BookSingle,
+      meta: {
+        home: true,
+      },
     },
   ],
 });
@@ -42,14 +54,21 @@ app
   .component("BookCard", BookCard)
   .component("Sidebar", TheSidebarVue);
 
-router.beforeEach((to, _, next) => {
-  if (
-    to.name === "bookSingle" &&
-    !JSON.parse(localStorage.getItem("isAuth")!)
-  ) {
-    next({ name: "register" });
-  } else {
-    next();
+router.beforeEach((to, from, next) => {
+  if (to.meta.home) {
+    if (localStorage.getItem("isAuth")) {
+      next();
+    } else {
+      next("/register");
+    }
+  } else if(to.meta.isAuth) {
+    if(localStorage.getItem("isAuth")){
+      next("/");
+    }else {
+      next()
+    }
+  }else {
+    next()
   }
 });
 

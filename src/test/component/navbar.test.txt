@@ -1,0 +1,20 @@
+// import { mount } from "@vue/test-utils";
+// import { test, expect, describe } from "vitest";
+// import Navbar from "../../components/TheNavbar.vue";
+
+// describe("TheNavbar.vue", () => {
+//   test("wishlist book cards", () => {
+//     const navbarComp = mount(Navbar, {
+//       props: {
+//         books: [
+//           { title: "theme", id: "1234", img: "picture", author: "author" },
+//         ],
+//         count: 4
+//       },
+//     });
+//     const bookCard = navbarComp.findAll('.book-card')
+//     const count = navbarComp.get('.badge')
+//     expect(bookCard).toHaveLength(1);
+//     expect(count.text()).toContain(count)
+//   });
+// });

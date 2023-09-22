@@ -6,13 +6,13 @@
 
     <div class="book-description">
       <div class="book-text">
-        <h4>{{ title }}</h4>
-        <p>{{ author }}</p>
+        <h4>title: {{ title }}</h4>
+        <p>author: {{ author }}</p>
       </div>
       <div class="btn-box" v-if="place !== 'wishlist'">
-        <RouterLink :to="id || ''" class="box-card-btn">See detail</RouterLink>
+        <RouterLink :to="id || ''" class="box-card-btn see-detail">See detail</RouterLink>
         <button
-          class="box-card-btn"
+          class="box-card-btn add-to-card"
           @click="$emit('onAddToCard', { title, author, img, id })"
         >
           Add to cart

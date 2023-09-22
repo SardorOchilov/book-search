@@ -1,6 +1,6 @@
 <template>
   <section>
-    <Navbar />
+    <Navbar :count ="0"/>
     <div class="container">
       <template v-if="loading">
         <p>Loading...</p>
@@ -56,7 +56,7 @@ onMounted(() => {
     )
     .then((data) => {
       loading.value = false;
-      book.value = Book(data.data.items[0].volumeInfo);
+      book.value = Book(data.data.items[0]);
     });
 });
 </script>

@@ -1,5 +1,6 @@
 export namespace IEntity {
   export interface book {
+    id: string;
     title: string;
     year: string[];
     publishedDate: string;
@@ -8,6 +9,7 @@ export namespace IEntity {
     imageLink: string;
     language: string;
     publisher: string;
+
   }
 
   export interface bookCard {

@@ -47,11 +47,11 @@
     <i @click="handleSideModal(false, 'wishlist')" class="fas fa-times"></i>
     <div class="books-box">
       <BookCard
+        data-test="book-card"
         :title="book.title"
         :author="book.author"
         :img="book.img"
         :id="book.id"
-
         v-for="book in books"
         :place="'wishlist'"
       ></BookCard>
@@ -70,8 +70,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import { useRouter } from "vue-router";
-import {IEntity} from "../modules/types"
-
+import { IEntity } from "../modules/types";
 
 const router = useRouter();
 const user = ref("");
@@ -83,7 +82,7 @@ const bgShow = ref(false);
 
 interface Props {
   count: number;
-  books: IEntity.bookCard[];
+  books?: IEntity.bookCard[];
 }
 
 defineProps<Props>();
@@ -320,7 +319,7 @@ function logout() {
   }
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 200px) {
   .menu-side {
     width: 100%;
   }

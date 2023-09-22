@@ -10,11 +10,11 @@
             <div class="books-table">
               <BookCard
                 @onAddToCard="handleAddToCard"
-                :img="book.volumeInfo?.imageLinks?.thumbnail || 'no image'"
-                :title="book.volumeInfo.title"
+                :img="book.imageLink || 'no image'"
+                :title="book.title"
                 :author="
-                  book.volumeInfo.authors
-                    ? book.volumeInfo.authors[0]
+                  book.publisher
+                    ? book.publisher
                     : 'No author'
                 "
                 :id="book.id"
@@ -30,14 +30,14 @@
 
 <script lang="ts" setup>
 import { ref, watch, onMounted } from "vue";
-import axios from "axios";
 import { IEntity } from "../modules/types";
+import { default as useBooks } from '../composables/use-books';
 
 const loading = ref(true);
-let books: any = ref({});
+let books = ref<IEntity.book[]>([]);
 const search = ref("");
 const countBadge = ref(0);
-const wishlistBooks = ref([] as IEntity.bookCard[]);
+const wishlistBooks = ref<IEntity.bookCard[]>([]);
 
 function handleChangeSearch(value: string) {
   search.value = value;
@@ -49,31 +49,13 @@ function handleAddToCard(book: IEntity.bookCard) {
     wishlistBooks.value.push(book);
 }
 
-onMounted(() => {
-  axios
-    .get(
-      `https://www.googleapis.com/books/v1/volumes?q=${
-        search.value ? search.value : "programming"
-      }&key=AIzaSyBEUco8bJ9TgGGw8hlrZNLEN6_62LBxfIo`
-    )
-    .then((data) => {
-      loading.value = false;
-      books.value = data.data.items;
-    })
-    .catch((error) => alert(`${error.massage}`));
+onMounted(async () => {
+    books.value = await useBooks(search.value)
+    loading.value = false;
 }),
-  watch(search, () => {
-    axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${
-          search.value ? search.value : "programming"
-        }&key=AIzaSyBEUco8bJ9TgGGw8hlrZNLEN6_62LBxfIo`
-      )
-      .then((data) => {
-        loading.value = false;
-        books.value = data.data.items;
-      })
-      .catch((error) => alert(`${error.massage}`));
+  watch(search, async () => {
+    books.value = await useBooks(search.value)
+    loading.value = false;
   });
 </script>
 

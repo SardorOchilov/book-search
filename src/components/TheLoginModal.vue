@@ -26,6 +26,7 @@ async function login() {
     await auth(username.value, "login");
     username.value = "";
     router.push("/");
+    isLoading.value = false;
   } catch (error: any) {
     isLoading.value = false;
     alert(error.message);
