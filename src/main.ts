@@ -56,13 +56,13 @@ app
 
 router.beforeEach((to, from, next) => {
   if (to.meta.home) {
-    if (localStorage.getItem("isAuth")) {
+    if (localStorage.getItem("username")) {
       next();
     } else {
       next("/register");
     }
   } else if(to.meta.isAuth) {
-    if(localStorage.getItem("isAuth")){
+    if(localStorage.getItem("username")){
       next("/");
     }else {
       next()
