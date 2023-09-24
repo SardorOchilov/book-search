@@ -28,7 +28,6 @@ describe("Navbar.vue", () => {
 
     expect(wrapper.find(".nav-links .active").text()).toBe("Book Store");
 
-    // expect(wrapper.find(".wishlist-icon .badge span").text()).toBe("3");
   });
 
   test("renders navbar links correctly when user is not logged in", async () => {

@@ -10,15 +10,6 @@ describe("LoginModal", () => {
     expect(wrapper.find("button.submit").exists()).toBe(true);
   });
 
-  //   test('disables the login button when isLoading is true', async () => {
-  //     const wrapper = mount(LoginModal);
-
-  //     // wrapper.vm.isLoading = true;
-  //     // await wrapper.vm.$nextTick();
-
-  //     expect(wrapper.find('button.submit').attributes('disabled')).toBe('disabled');
-  //   });
-
   test("enables the login button when isLoading is false and username is not empty", async () => {
     const wrapper = mount(LoginModal);
 
