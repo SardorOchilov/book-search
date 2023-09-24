@@ -7,7 +7,8 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul',
       reporter: [ 'html'],
-      enabled: true
+      enabled: true,
+    
     },
     environment: "jsdom",
   },
